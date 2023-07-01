@@ -4,9 +4,9 @@
 
  const startButton = document.querySelector(".js-start-button");
  // TODO: Add the missing query selectors:
- const statusSpan; // Use querySelector() to get the status element
- const heading; // Use querySelector() to get the heading element
- const padContainer; // Use querySelector() to get the heading element
+ const statusSpan = document.querySelector("js-status"); // Use querySelector() to get the status element
+ const heading = document.querySelector("js-heading"); // Use querySelector() to get the heading element
+ const padContainer = document.querySelector("js-pad-container"); // Use querySelector() to get the heading element
 
 /**
  * VARIABLES
@@ -37,16 +37,30 @@ let roundCount = 0; // track the number of rounds that have been played so far
     selector: document.querySelector(".js-pad-red"),
     sound: new Audio("../assets/simon-says-sound-1.mp3"),
   },
-  // TODO: Add the objects for the green, blue, and yellow pads. Use object for the red pad above as an example.
+  {
+    color: "green",
+    selector: document.querySelector(".js-pad-green"),
+    sound: new Audio("../assets/simon-says-sound-2.mp3"),
+  },
+  {
+    color: "blue",
+    selector: document.querySelector(".js-pad-blue"),
+    sound: new Audio("../assets/simon-says-sound-3.mp3"),
+  },
+  {
+    color: "yellow",
+    selector: document.querySelector(".js-pad-yellow"),
+    sound: new Audio("../assets/simon-says-sound-4.mp3"),
+  },
 ];
 
 /**
  * EVENT LISTENERS
  */
 
-padContainer.addEventListener("click", padHandler);
+//padContainer.addEventListener("click", padHandler);
 // TODO: Add an event listener `startButtonHandler()` to startButton.
-
+startButton.addEventListener("click", startButtonHandler);
 /**
  * EVENT HANDLERS
  */
@@ -65,12 +79,24 @@ padContainer.addEventListener("click", padHandler);
  * 5. Call `playComputerTurn()` to start the game with the computer going first.
  *
  */
-function startButtonHandler() {
+
+//initializes game by setting # of rounds needed to win game, updating game interface,
+//and calling playComputerTurn()
+function startButtonHandler(event) {
   // TODO: Write your code here.
+  //Call setLevel() to set the level of the game
+  let maxRoundCount = setLevel(level)
+  //Increment the roundCount from 0 to 1
+  let roundCount = 1
+  //Hide the start button by adding the `.hidden` class to the start button
+  startButton.classlist.add(".hidden")
+  //Unhide the status element, which displays the status messages, by removing the `.hidden` class
+  statusSpan.classList.remove(".hidden") 
+  //Call `playComputerTurn()` to start the game with the computer going first.
+  let start = playComputerTurn()
 
   return { startButton, statusSpan };
 }
-
 /**
  * Called when one of the pads is clicked.
  *
@@ -121,8 +147,26 @@ function padHandler(event) {
  * setLevel(8) //> returns "Please enter level 1, 2, 3, or 4";
  *
  */
-function setLevel(level = 1) {
+function setLevel(level) {
   // TODO: Write your code here.
+  if (level > 4) {
+    return "Please enter level 1, 2, 3, or 4"
+  }
+
+  if (level == null || 1) {
+    return 8
+  } else 
+  if (level == 2) {
+    return 14
+  } else 
+  if (level == 3) {
+    return 20
+  }
+  else 
+  if (level == 4) {
+    return 31
+  } else 
+  return "Please enter level 1, 2, 3, or 4"
 }
 
 /**
@@ -141,9 +185,9 @@ function setLevel(level = 1) {
  * getRandomItem([1, 2, 3, 4]) //> returns 1
  */
 function getRandomItem(collection) {
-  // if (collection.length === 0) return null;
-  // const randomIndex = Math.floor(Math.random() * collection.length);
-  // return collection[randomIndex];
+  if (collection.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * collection.length);
+  return collection[randomIndex];
 }
 
 /**
@@ -151,24 +195,29 @@ function getRandomItem(collection) {
  */
 function setText(element, text) {
   // TODO: Write your code here.
+  element.textContent = text
   return element;
 }
 
+
 /**
  * Activates a pad of a given color by playing its sound and light
- *
- * 1. Use the `.find()` method to retrieve the pad from the `pads` array and store it in
- * a variable called `pad`
- *
- * 2. Add the `"activated"` class to the selected pad
- *
- * 3. Play the sound associated with the pad
- *
- * 4. After 500ms, remove the `"activated"` class from the pad
+ * @param {*} color 
  */
-
 function activatePad(color) {
   // TODO: Write your code here.
+  //Use the `.find()` method to retrieve the pad from the `pads` array and store it in a variable called `pad`
+  let pad = pads.find(pad => pads.color = color) 
+  //Add the `"activated"` class to the selected pad
+
+  //Play the sound associated with the pad
+   //pads.sound
+  //After 500ms, remove the `"activated"` class from the pad
+  function deactivatePad(){
+    //classList.remove(activated)
+  }  
+  setTimeout(deactivatePad, 500)
+
 }
 
 /**
