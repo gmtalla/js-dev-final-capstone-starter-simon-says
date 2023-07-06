@@ -9,18 +9,29 @@
   </head>
   <body>
     <main>
-      <h1 class="js-heading" id="title">Simon Says</h1>
+      <h1 id = "title" class="js-heading"> Simon Says</h1>
 
       <section class="game-controls">
-        <button class="start-button js-start-button">Start</button>
+        <button class="start-button js-start-button" type="button">Start</button>
+        <div class="difficulty js-difficulty">
+          <p>Difficulty:</p>
+          <input type="radio" id="1" value="1" name="difficulty" checked>
+          <label for="1">1</label>
+          <input type="radio" id="2" value="2" name="difficulty">
+          <label for="2">2</label>
+          <input type="radio" id="3" value="3" name="difficulty">
+          <label for="3">3</label>
+          <input type="radio" id="4" value="4" name="difficulty">
+          <label for="4">4</label>
+        </div>
         <span class="status hidden js-status"></span>
       </section>
 
       <section class="pad-container unclickable js-pad-container">
         <div class="pad pad-red js-pad-red" data-color="red"></div>
+        <div class="pad pad-green js-pad-green" data-color="green"></div>
         <div class="pad pad-blue js-pad-blue" data-color="blue"></div>
         <div class="pad pad-yellow js-pad-yellow" data-color="yellow"></div>
-        <div class="pad pad-green js-pad-green" data-color="green"></div>
       </section>
     </main>
     <script src="./src/index.js"></script>

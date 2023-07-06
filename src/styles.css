@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Microbe&display=swap');
 
 html {
-  background: url('../assets/background.png') no-repeat center center fixed;
+  background: url('../assets/new\ background.jpg') no-repeat center center fixed;
   box-sizing: border-box;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  color: yellow;
+  color:  rgb(255, 0, 132);
   font-family: 'Rubik Microbe', sans-serif;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@ body {
 }
 
 main {
-  background-color: #000;
+  background-color: #000000;
   padding: 40px;
 }
 
@@ -37,20 +37,20 @@ h1 {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: yellow;
+  color: rgb(255, 0, 132);
   text-align: center;
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
   background-color: transparent;
-  border: 1px solid yellow;
+  border: 1px solid rgb(255, 0, 132);
   cursor: pointer;
 }
 
 .start-button:hover {
   color: greenyellow;
   font-size: 18px;
-  border-color: greenyellow;
+  border-color: rgb(47, 238, 255);
   transform: rotate(5deg);
 }
 
